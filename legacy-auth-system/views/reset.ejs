@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroTech Solutions - Password Reset</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="login-panel">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <span class="glyphicon glyphicon-refresh"></span>
+                                <% if (step === 'request') { %>
+                                    Password Reset Request
+                                <% } else { %>
+                                    Set New Password
+                                <% } %>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="security-badge">
+                                <span class="glyphicon glyphicon-shield"></span>
+                                Secure Password Reset - Protected by RetroTech Security
+                            </div>
+                            
+                            <% if (typeof error !== 'undefined' && error) { %>
+                                <div class="alert alert-danger">
+                                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                                    <%= error %>
+                                </div>
+                            <% } %>
+                            
+                            <% if (typeof success !== 'undefined' && success) { %>
+                                <div class="alert alert-success">
+                                    <span class="glyphicon glyphicon-ok-sign"></span>
+                                    <%= success %>
+                                </div>
+                            <% } %>
+
+                            <% if (step === 'request') { %>
+                                <form method="POST" action="/reset/reset-password">
+                                    <div class="form-group">
+                                        <label for="identifier">Username or Email Address</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-user"></span>
+                                            </span>
+                                            <input type="text" class="form-control" id="identifier" name="identifier" 
+                                                   placeholder="Enter your username or email" required>
+                                        </div>
+                                        <small class="help-block">We'll send you a secure reset link</small>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        <span class="glyphicon glyphicon-send"></span>
+                                        Send Reset Link
+                                    </button>
+                                </form>
+                            <% } else { %>
+                                <div class="alert alert-info">
+                                    <span class="glyphicon glyphicon-info-sign"></span>
+                                    Setting new password for: <strong><%= username %></strong>
+                                </div>
+                                
+                                <form method="POST" action="/reset/reset-password/<%= token %>">
+                                    <div class="form-group">
+                                        <label for="password">New Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-lock"></span>
+                                            </span>
+                                            <input type="password" class="form-control" id="password" name="password" 
+                                                   required minlength="6">
+                                        </div>
+                                        <small class="help-block">Minimum 6 characters</small>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="confirmPassword">Confirm New Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-lock"></span>
+                                            </span>
+                                            <input type="password" class="form-control" id="confirmPassword" 
+                                                   name="confirmPassword" required>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                        Update Password
+                                    </button>
+                                </form>
+                            <% } %>
+                            
+                            <div class="text-center" style="margin-top: 15px;">
+                                <a href="/auth/login" class="btn btn-link">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                    Back to Login
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-footer text-center">
+                            <small class="text-muted">
+                                RetroTech Solutions Authentication System v2.3.0<br>
+                                Enterprise Security Since 2010
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

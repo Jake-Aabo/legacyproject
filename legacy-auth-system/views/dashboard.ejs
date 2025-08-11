@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroTech Solutions - Secure Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-shield"></span>
+                    RetroTech Solutions
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="navbar-nav navbar-right">
+                    <li class="navbar-text">
+                        Welcome, <strong><%= user.username %></strong>
+                    </li>
+                    <li>
+                        <a href="/auth/logout">
+                            <span class="glyphicon glyphicon-log-out"></span>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 70px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1>
+                        <span class="glyphicon glyphicon-ok-circle text-success"></span>
+                        Welcome to RetroTech Solutions Secure Portal
+                    </h1>
+                    <p class="lead">
+                        You have successfully logged into our enterprise authentication system.
+                        Your session is secure and protected by our advanced security protocols.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-user"></span>
+                            Account Information
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <td><strong>User ID:</strong></td>
+                                <td><%= user.id %></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Username:</strong></td>
+                                <td><%= user.username %></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email:</strong></td>
+                                <td><%= user.email %></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Account Created:</strong></td>
+                                <td><%= new Date(user.created_at).toLocaleString() %></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Session Status:</strong></td>
+                                <td><span class="label label-success">Active & Secure</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                            System Information
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <p><strong>System Version:</strong> v2.3.0</p>
+                        <p><strong>Security Level:</strong> Enterprise</p>
+                        <p><strong>Encryption:</strong> MD5 Enhanced</p>
+                        <p><strong>Session Storage:</strong> File-based</p>
+                        <p><strong>Last Updated:</strong> 2024</p>
+                    </div>
+                </div>
+                
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-shield"></span>
+                            Security Status
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="alert alert-success">
+                            <span class="glyphicon glyphicon-ok"></span>
+                            <strong>All systems operational</strong>
+                            <br>Your connection is secure
+                        </div>
+                        <p><small>Protected by RetroTech Security since 2010</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-cog"></span>
+                            Available Actions
+                        </h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <a href="/reset/reset-password" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-lock"></span>
+                            Change Password
+                        </a>
+                        <button class="btn btn-info" onclick="alert('Feature not available in this version')">
+                            <span class="glyphicon glyphicon-wrench"></span>
+                            Account Settings
+                        </button>
+                        <button class="btn btn-warning" onclick="alert('Support contact: support@retrotech.com')">
+                            <span class="glyphicon glyphicon-question-sign"></span>
+                            Help & Support
+                        </button>
+                        <a href="/auth/logout" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-log-out"></span>
+                            Secure Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="text-center">
+                <p class="text-muted">
+                    © 2024 RetroTech Solutions. Enterprise Authentication System v2.3.0.
+                    <br>
+                    Trusted security solutions since 2010.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
