@@ -96,7 +96,7 @@ class DatabaseWrapper {
 
     getUserByResetToken(token, callback) {
         try {
-            const stmt = this.db.prepare('SELECT * FROM users WHERE reset_token = ? AND reset_token_expires > datetime("now")');
+            const stmt = this.db.prepare('SELECT * FROM users WHERE reset_token = ? AND reset_token_expires > datetime(\'now\')');
             const result = stmt.get(token);
             if (callback) callback(null, result);
         } catch (err) {
